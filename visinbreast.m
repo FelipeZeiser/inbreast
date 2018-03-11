@@ -26,10 +26,10 @@ for i = 1 : length(files)
     boundbox = zeros(size(im,1), size(im,2));
     for j = 1 : size(minpoint,1)
         fprintf(fid, '%d %d %d %d ', [minpoint(j,1),minpoint(j,2),maxpoint(j,1),maxpoint(j,2)]);
-        boundbox(minpoint(j,1):maxpoint(j,1), minpoint(j,2)) = 255;
-        boundbox(minpoint(j,1):maxpoint(j,1), maxpoint(j,2)) = 255;
-        boundbox(minpoint(j,1), minpoint(j,2):maxpoint(j,2)) = 255;
-        boundbox(maxpoint(j,1), minpoint(j,2):maxpoint(j,2)) = 255;
+        boundbox(minpoint(j,2):maxpoint(j,2), minpoint(j,1)) = 255;
+        boundbox(minpoint(j,2):maxpoint(j,2), maxpoint(j,1)) = 255;
+        boundbox(minpoint(j,2), minpoint(j,1):maxpoint(j,1)) = 255;
+        boundbox(maxpoint(j,2), minpoint(j,1):maxpoint(j,1)) = 255;
     end
     fprintf(fid, '\n');
     %fprintf(fid, '%f %f %f %f\n', [min(minpoint(:,1)),min(minpoint(:,2)),max(maxpoint(:,1)),max(maxpoint(:,2))]);
